@@ -11,7 +11,7 @@ Queue.prototype.enqueue = function (val) {
 };
 
 Queue.prototype.dequeue = function () {
-  if (this.addPosition - this.removePosition + 1 > 0) {
+  if (this.size() > 0) {
     var temp = this.storage[this.removePosition];
     delete this.storage[this.removePosition];
     this.removePosition++;

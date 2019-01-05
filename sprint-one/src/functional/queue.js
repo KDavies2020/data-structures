@@ -13,7 +13,7 @@ var Queue = function() {
   };
 
   someInstance.dequeue = function() {
-    if (counter - dequeuPosition + 1 >= 1) {
+    if (someInstance.size() >= 1) {
       var temp = storage[dequeuPosition];
       delete storage[dequeuPosition];
       dequeuPosition++;
