@@ -8,7 +8,6 @@ var Tree = function(value) {
   return newTree;
 };
 
-// hello do you see my changes as they happ en lskdjf;lasdkjf laskdjf la;sdkjf al;sdkfj asl;dkfj
 
 var treeMethods = {};
 

@@ -1,28 +1,78 @@
 var BinarySearchTree = function(value) {
-
+  // this.storage = {};
+  this.value = value;
+  this.left = null;
+  this.right = null;
 };
 
-BinarySearchTree.prototype.left = function() {
-// A .left property, a binary search tree (BST) where all values are lower than the current value.
 
-};
-
-BinarySearchTree.prototype.right = function() {
-//A .right property, a BST where all values are higher than the current value.
-};
 
 BinarySearchTree.prototype.insert = function(value) {
-// A .insert() method, which accepts a value and places it in the tree in the correct position.
+  var newTree = new BinarySearchTree(value);
+  var currentTree = this;
+  var placeFinder = function(currentNode) {
+
+    if (value < currentNode.value) {
+
+      var leftChild = currentNode.left;
+      if (leftChild === null) {
+
+        currentNode.left = newTree;
+      } else {
+        placeFinder(currentNode.left);
+      }
+    } else if (value > currentNode.value) {
+      var rightChild = currentNode.right;
+      if (rightChild === null) {
+
+        currentNode.right = newTree;
+      } else {
+        placeFinder(currentNode.right);
+      }
+    }
+  };
+  placeFinder(currentTree);
+
 };
+
+// ** Time complexity for .insert: O(logN)
 
 BinarySearchTree.prototype.contains = function(value) {
-// A .contains() method, which accepts a value and returns a boolean reflecting whether or not the value is contained in the tree.
+
+  var searcher = function(tree) {
+
+    if (tree.value === value) {
+      return true;
+    } else if (value > tree.value && (tree.right)) {
+      return searcher(tree.right);
+    } else if (value < tree.value && (tree.left)) {
+      return searcher(tree.left);
+    }
+
+    return false;
+  };
+
+  return searcher(this);
 };
+
+// ** Time complexity for .contains: O(logN)
 
 BinarySearchTree.prototype.depthFirstLog = function(cb) {
-// A .depthFirstLog() method, which accepts a callback and executes it on every value contained in the tree.
+
+  var recursiveCB = function(node) {
+    cb(node.value);
+
+    if (node.left) {
+      recursiveCB(node.left);
+    }
+    if (node.right) {
+      recursiveCB(node.right);
+    }
+  };
+  recursiveCB(this);
 };
 
+// ** time complexity for .depthFirstLog: linear O(n)
 /*
- * Complexity: What is the time complexity of the above functions?
- */
+     * Complexity: What is the time complexity of the above functions?
+     */
