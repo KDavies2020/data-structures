@@ -3,6 +3,7 @@ var BinarySearchTree = function(value) {
   this.value = value;
   this.left = null;
   this.right = null;
+  this.counter = 1;
 };
 
 
@@ -11,8 +12,9 @@ BinarySearchTree.prototype.insert = function(value) {
   var newTree = new BinarySearchTree(value);
   var currentTree = this;
   var placeFinder = function(currentNode) {
-
-    if (value < currentNode.value) {
+    if (value === currentNode.value) {
+      currentNode.counter++;
+    } else if (value < currentNode.value) {
 
       var leftChild = currentNode.left;
       if (leftChild === null) {
@@ -74,5 +76,5 @@ BinarySearchTree.prototype.depthFirstLog = function(cb) {
 
 // ** time complexity for .depthFirstLog: linear O(n)
 /*
-     * Complexity: What is the time complexity of the above functions?
-     */
+ * Complexity: What is the time complexity of the above functions?
+ */

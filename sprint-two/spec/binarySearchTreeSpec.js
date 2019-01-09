@@ -37,4 +37,10 @@ describe('binarySearchTree', function() {
     binarySearchTree.depthFirstLog(func);
     expect(array).to.eql([5, 2, 3, 7]);
   });
+
+  it('should increase count property when adding duplicate values', function() {
+    binarySearchTree.insert(5);
+    binarySearchTree.insert(5);
+    expect(binarySearchTree.counter).to.equal(3);
+  });
 });

@@ -12,6 +12,7 @@ Graph.prototype.addNode = function(node) {
   };
   this.storage.push(newNode);
 };
+// time complexity for .addNote: O(1) constant
 
 // Return a boolean value indicating if the value passed to contains is represented in the graph.
 Graph.prototype.contains = function(node) {
@@ -22,6 +23,7 @@ Graph.prototype.contains = function(node) {
   }
   return false;
 };
+//time complexity for .contains: O(n) linear
 
 // Removes a node from the graph.
 Graph.prototype.removeNode = function(node) {
@@ -36,6 +38,7 @@ Graph.prototype.removeNode = function(node) {
     }
   }
 };
+//time complexity for .removeNode: O(n) linear
 
 // Returns a boolean indicating whether two specified nodes are connected.  Pass in the values contained in each of the two nodes.
 Graph.prototype.hasEdge = function(fromNode, toNode) {
@@ -49,6 +52,7 @@ Graph.prototype.hasEdge = function(fromNode, toNode) {
   }
   return from.connections.includes(toNode);
 };
+//time complexity for .hasEdge: O(n) linear
 
 // Connects two nodes in a graph by adding an edge between them.
 Graph.prototype.addEdge = function(fromNode, toNode) {
@@ -62,9 +66,12 @@ Graph.prototype.addEdge = function(fromNode, toNode) {
       to = this.storage[i];
     }
   }
-  from.connections.push(toNode);
-  to.connections.push(fromNode);
+  if (from !== to) {
+    from.connections.push(toNode);
+    to.connections.push(fromNode);
+  }
 };
+//time complexity for .addEdge: O(n) linear
 
 // Remove an edge between any two specified (by value) nodes.
 Graph.prototype.removeEdge = function(fromNode, toNode) {
@@ -87,6 +94,7 @@ Graph.prototype.removeEdge = function(fromNode, toNode) {
     }
   }
 };
+//time complexity for .removeEdge: O(n) linear
 
 // Pass in a callback which will be executed on each node of the graph.
 Graph.prototype.forEachNode = function(cb) {
@@ -95,6 +103,7 @@ Graph.prototype.forEachNode = function(cb) {
     cb(currNode.value);
   }
 };
+//time complexity for .forEachNode: O(n) linear
 
 /*
 {  } Graph

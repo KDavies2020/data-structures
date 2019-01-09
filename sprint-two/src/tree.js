@@ -14,6 +14,7 @@ var treeMethods = {};
 treeMethods.addChild = function(value) {
   this.children.push(Tree(value));
 };
+//time complexity of .addChild: O(1) constant
 
 treeMethods.contains = function(target) {
 
@@ -32,6 +33,8 @@ treeMethods.contains = function(target) {
   }
   return false;
 };
+
+//time complexity of .contains: O(n) linear
 
 
 /*

@@ -66,6 +66,13 @@ describe('graph', function() {
     expect(graph.hasEdge(2, 5)).to.equal(true);
     expect(graph.hasEdge(1, 5)).to.equal(true);
     expect(graph.hasEdge(3, 5)).to.equal(true);
-    expect(graph.hasEdge(5, 5)).to.equal(true);
+    expect(graph.hasEdge(5, 5)).to.equal(false);
+  });
+
+  it('should not create an edge for a node connecting to itself', function() {
+    graph.addNode(5);
+    graph.addEdge(5, 5);
+    expect(graph.hasEdge(5, 5)).to.equal(false);
+
   });
 });
